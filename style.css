@@ -1,12 +1,16 @@
 @charset "UTF-8";
 
 /* ==========================================================================
-   바이브 카페 (Vibe Cafe) 주문서 스타일 시트
-   - 메인 테마: 따뜻한 카페 분위기의 베이지(#faf6f0) 및 브라운(#6b4226)
-   - 모바일 및 데스크톱 반응형 520px 최대 너비 레이아웃
+   바이브 카페 (Vibe Cafe) 주문서 - Spotify Design System 적용
+   - 베이스: Content-first darkness (#121212, #181818, #1f1f1f)
+   - 포인트: Spotify Green (#1ed760) 브랜드 악센트
+   - 타이포그래피: SpotifyMixUI / CircularSp 서체 계열 및 계층 구조
+   - 기하 구조: Pill-and-Circle (500px~9999px 둥근 알약 버튼 및 컨트롤)
+   - 그림자: Dark surface heavy shadow (rgba(0, 0, 0, 0.5) 0px 8px 24px)
+   - 인셋 테두리: Inset border combo (rgb(124, 124, 124) 0px 0px 0px 1px inset)
    ========================================================================== */
 
-/* 기본 리셋 및 전역 스타일 */
+/* 기본 리셋 및 전역 레이아웃 */
 * {
   margin: 0;
   padding: 0;
@@ -14,190 +18,240 @@
 }
 
 body {
-  font-family: '맑은 고딕', 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #faf6f0;
-  color: #3e2723;
-  line-height: 1.6;
+  font-family: 'SpotifyMixUI', 'CircularSp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  background-color: #121212; /* Spotify Base Level 0 */
+  color: #ffffff;            /* --text-base */
+  line-height: 1.5;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 주문서 메인 컨테이너 */
+/* 주문서 메인 컨테이너 (Level 1 Surface Card) */
 .order-container {
   width: 100%;
   max-width: 520px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(107, 66, 38, 0.08), 0 2px 6px rgba(107, 66, 38, 0.04);
-  padding: 36px 28px;
-  border: 1px solid #f0e6dc;
+  background-color: #181818; /* Spotify Dark Surface Card */
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 24px; /* Heavy Shadow */
+  padding: 36px 30px;
+  border: 1px solid #242424;
 }
 
 /* 상단 헤더 영역 */
 .header-section {
   text-align: center;
   margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 2px dashed #ede0d4;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #282828;
 }
 
 .cafe-logo {
-  font-size: 54px;
-  line-height: 1;
-  margin-bottom: 12px;
-  display: inline-block;
-  filter: drop-shadow(0 2px 4px rgba(107, 66, 38, 0.15));
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px auto;
+  border-radius: 50%;
+  background: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 8px;
+  border: 1px solid #2e2e2e;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cafe-logo:hover {
+  transform: scale(1.06);
+  border-color: #1ed760;
 }
 
 .cafe-title {
-  font-size: 26px;
+  font-size: 24px; /* Spotify Section Title 24px */
   font-weight: 700;
-  color: #6b4226;
-  letter-spacing: -0.5px;
+  color: #ffffff;
+  letter-spacing: -0.4px;
   margin-bottom: 6px;
 }
 
 .cafe-subtitle {
-  font-size: 14px;
-  color: #8d6e63;
+  font-size: 14px; /* Metadata 14px */
+  color: #b3b3b3;   /* Silver Secondary Text */
   font-weight: 400;
 }
 
 /* 폼 그룹 및 레이블 스타일 */
 .form-group {
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .form-label {
   display: block;
-  font-size: 15px;
-  font-weight: 600;
-  color: #4a2c17;
+  font-size: 14px;
+  font-weight: 700; /* Bold Binary */
+  color: #ffffff;
   margin-bottom: 8px;
+  letter-spacing: 0.1px;
 }
 
+/* 필수 항목 뱃지 (Negative Red: #f3727f) */
 .required-badge {
-  color: #d32f2f;
+  color: #f3727f;
   margin-left: 4px;
+  font-weight: 700;
 }
 
-/* 텍스트 입력, 셀렉트 박스, 텍스트에어리어 기본 스타일 */
+/* 텍스트 입력, 셀렉트 박스 (Spotify Pill Search Input Geometry) */
 .input-field,
-.select-field,
-.textarea-field {
+.select-field {
   width: 100%;
-  padding: 11px 14px;
+  height: 44px;
+  padding: 0 18px;
   font-size: 14px;
   font-family: inherit;
-  color: #333333;
-  background-color: #faf8f5;
-  border: 1.5px solid #e0d5c8;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  color: #ffffff;
+  background-color: #1f1f1f; /* Mid Dark Interactive Surface */
+  border: none;
+  border-radius: 500px;      /* Pill Input */
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, rgb(124, 124, 124) 0px 0px 0px 1px inset; /* Inset Border Combo */
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
   outline: none;
+  appearance: none;
 }
 
-/* 포커스 시 갈색 테두리 및 부드러운 그림자 효과 */
+/* 텍스트에어리어 (Comfortable 8px Geometry) */
+.textarea-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #ffffff;
+  background-color: #1f1f1f;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, rgb(124, 124, 124) 0px 0px 0px 1px inset;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  outline: none;
+  resize: vertical;
+  min-height: 84px;
+}
+
+/* 포커스 시 Spotify White/Green 인셋 하이라이트 */
 .input-field:focus,
 .select-field:focus,
 .textarea-field:focus {
-  border-color: #6b4226;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(107, 66, 38, 0.16);
+  background-color: #242424;
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, #ffffff 0px 0px 0px 1.5px inset;
 }
 
 .input-field::placeholder,
 .textarea-field::placeholder {
-  color: #a89f91;
+  color: #727272;
   font-size: 13.5px;
 }
 
-.textarea-field {
-  resize: vertical;
-  min-height: 80px;
+/* 커스텀 셀렉트 드롭다운 화살표 */
+.select-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b3b3b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+.select-field option {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  padding: 10px;
 }
 
 /* 라디오 버튼 및 체크박스 가로 배치 컨테이너 */
 .horizontal-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* 커스텀 선택 칩 (사이즈 및 옵션) */
+/* 커스텀 선택 칩 (Spotify Full Pill: 9999px) */
 .option-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background-color: #faf7f2;
-  border: 1.5px solid #e5dacd;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #1f1f1f;
+  border-radius: 9999px; /* Full Pill Geometry */
   cursor: pointer;
-  font-size: 14px;
-  color: #555555;
-  transition: all 0.2s ease;
+  font-size: 13.5px;
+  color: #b3b3b3;        /* Silver */
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, rgb(80, 80, 80) 0px 0px 0px 1px inset;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
   user-select: none;
 }
 
 .option-label:hover {
-  background-color: #f3ece2;
-  border-color: #c9b4a1;
+  background-color: #282828;
+  color: #ffffff;
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, rgb(140, 140, 140) 0px 0px 0px 1px inset;
 }
 
-/* 기본 라디오/체크박스 스타일 및 액센트 컬러 */
+/* 라디오/체크박스 인풋 스타일 */
 .option-label input[type="radio"],
 .option-label input[type="checkbox"] {
-  accent-color: #6b4226;
+  accent-color: #1ed760; /* Spotify Green */
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
 }
 
-/* 활성화 상태 강조 */
+/* 활성화(선택) 상태: 밝아진 서피스 + 화이트 텍스트 + 그린 악센트 인셋 */
 .option-label:has(input:checked) {
-  background-color: #f4ece4;
-  border-color: #6b4226;
-  color: #4a2c17;
-  font-weight: 600;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: rgb(18, 18, 18) 0px 1px 0px, #1ed760 0px 0px 0px 1.5px inset;
 }
 
 /* 수량 조절 입력 필드 특화 */
 .quantity-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .quantity-input {
-  width: 90px;
+  width: 100px;
   text-align: center;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .quantity-unit {
-  font-size: 14px;
-  color: #666666;
+  font-size: 13.5px;
+  color: #b3b3b3;
 }
 
-/* 실시간 예상 금액 표시 영역 */
+/* 실시간 예상 금액 표시 영역 (Spotify Player Widget 스타일) */
 .price-display-section {
-  margin: 28px 0 20px 0;
-  padding: 16px;
-  background-color: #f7f1ea;
-  border-radius: 12px;
-  border: 1px solid #ebd9c8;
+  margin: 26px 0 20px 0;
+  padding: 16px 20px;
+  background-color: #121212;
+  border-radius: 8px;
+  border: 1px solid #282828;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 8px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .price-text {
   font-size: 24px;
   font-weight: 700;
-  color: #6b4226;
+  color: #1ed760; /* Spotify Green */
   letter-spacing: -0.5px;
 }
 
@@ -208,16 +262,18 @@ body {
   margin-top: 10px;
 }
 
-/* 버튼 공통 스타일 */
+/* 버튼 공통 스타일 (Spotify Mix UI Uppercase Systematic Label) */
 .btn {
   flex: 1;
-  padding: 14px 20px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px; /* Uppercase Positive Letter-Spacing 1.4px~2px */
+  border-radius: 9999px; /* Full Pill Radius */
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,45 +281,52 @@ body {
   font-family: inherit;
 }
 
-/* 주문하기 버튼 (메인 브라운) */
+/* 주문하기 버튼 (Spotify Green CTA) */
 .btn-primary {
-  background-color: #6b4226;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(107, 66, 38, 0.25);
+  background-color: #1ed760;
+  color: #000000; /* Black on Green */
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 24px;
 }
 
 .btn-primary:hover {
-  background-color: #825230;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(107, 66, 38, 0.3);
+  background-color: #1fdf64;
+  transform: scale(1.03); /* Spotify signature micro-scaling */
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: scale(0.98);
+  background-color: #169c46;
 }
 
-/* 다시 작성 버튼 */
+/* 다시 작성 버튼 (Spotify Outlined Pill) */
 .btn-secondary {
-  background-color: #ede0d4;
-  color: #5c381f;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #7c7c7c; /* Light Border */
 }
 
 .btn-secondary:hover {
-  background-color: #e2d1c2;
+  border-color: #ffffff;
+  transform: scale(1.03);
+  background-color: #1f1f1f;
 }
 
-/* 주문 확인 메시지 박스 */
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* 주문 확인 메시지 박스 (Spotify Notification Banner) */
 .order-confirmation {
-  display: none; /* 기본 숨김 */
+  display: none;
   margin-top: 24px;
   padding: 16px 20px;
-  background-color: #e8f5e9;
-  border: 1.5px solid #a5d6a7;
-  border-radius: 10px;
-  color: #1b5e20;
-  font-size: 14.5px;
+  background-color: #1f1f1f;
+  border: 1px solid #1ed760; /* Green accent border */
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
   line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 16px;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -273,24 +336,25 @@ body {
 
 .confirmation-header {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14.5px;
+  color: #1ed760;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
-/* 알림/에러 메시지 바 (UI 내 안내) */
+/* 에러 알림 바 (Negative Red: #f3727f) */
 .alert-box {
   display: none;
   margin-bottom: 20px;
-  padding: 12px 16px;
-  background-color: #ffebee;
-  border: 1.5px solid #ef9a9a;
+  padding: 12px 18px;
+  background-color: #241617;
+  border: 1px solid #f3727f;
   border-radius: 8px;
-  color: #c62828;
-  font-size: 14px;
-  font-weight: 500;
+  color: #f3727f;
+  font-size: 13.5px;
+  font-weight: 700;
   animation: shake 0.3s ease;
 }
 
@@ -302,9 +366,9 @@ body {
 
 /* 엑셀 관리 및 다운로드 영역 */
 .excel-section {
-  margin-top: 26px;
+  margin-top: 28px;
   padding-top: 22px;
-  border-top: 1px dashed #e0d3c5;
+  border-top: 1px solid #282828;
 }
 
 .excel-header {
@@ -316,68 +380,79 @@ body {
 
 .excel-title {
   font-size: 14px;
-  font-weight: 600;
-  color: #5a3c26;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .excel-count-badge {
-  background-color: #f0e4d7;
-  color: #6b4226;
+  background-color: #242424;
+  color: #1ed760;
   font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-weight: 700;
+  border: 1px solid #333333;
 }
 
+/* 엑셀 다운로드 버튼 (Spotify Green Bordered Pill) */
 .btn-excel {
   width: 100%;
-  background-color: #1e7145;
-  color: #ffffff;
-  padding: 11px 16px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: none;
+  background-color: #1f1f1f;
+  color: #1ed760;
+  border: 1px solid #1ed760;
+  padding: 12px 18px;
+  font-size: 13px;
+  border-radius: 9999px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
   font-family: inherit;
 }
 
 .btn-excel:hover:not(:disabled) {
-  background-color: #165b36;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(30, 113, 69, 0.2);
+  background-color: #1ed760;
+  color: #000000;
+  transform: scale(1.02);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 6px 16px;
 }
 
 .btn-excel:disabled {
-  background-color: #cbd5e1;
-  color: #64748b;
+  background-color: #1a1a1a;
+  border-color: #333333;
+  color: #555555;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-/* 최근 주문 이력 미니 테이블 */
+/* 최근 주문 이력 리스트 (Spotify Playlist Tracklist 스타일) */
 .recent-orders-list {
-  margin-top: 12px;
-  max-height: 180px;
+  margin-top: 14px;
+  max-height: 190px;
   overflow-y: auto;
-  border: 1px solid #ebd9c8;
+  border: 1px solid #282828;
   border-radius: 8px;
-  background-color: #faf8f5;
+  background-color: #121212;
 }
 
 .recent-order-item {
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 13px;
-  border-bottom: 1px solid #f0e6dc;
+  border-bottom: 1px solid #1f1f1f;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.recent-order-item:hover {
+  background-color: #1f1f1f;
 }
 
 .recent-order-item:last-child {
@@ -391,22 +466,41 @@ body {
 }
 
 .recent-order-name {
-  font-weight: 600;
-  color: #3e2723;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 .recent-order-desc {
   font-size: 12px;
-  color: #795548;
+  color: #b3b3b3; /* Silver */
 }
 
 .recent-order-price {
   font-weight: 700;
-  color: #6b4226;
+  color: #1ed760; /* Spotify Green */
   white-space: nowrap;
+  font-size: 13.5px;
 }
 
-/* 부드러운 페이드인 애니메이션 */
+/* 커스텀 스크롤바 (Spotify Dark Minimalist) */
+.recent-orders-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.recent-orders-list::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+.recent-orders-list::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+.recent-orders-list::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* 애니메이션 효과 */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -418,26 +512,30 @@ body {
   }
 }
 
-/* 오류 알림 진동 효과 */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-4px); }
   75% { transform: translateX(4px); }
 }
 
-/* 반응형 스타일 조정 */
+/* 반응형 모바일 */
 @media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
   .order-container {
     padding: 24px 18px;
+    border-radius: 8px;
   }
   
   .horizontal-options {
-    gap: 8px;
+    gap: 6px;
   }
   
   .option-label {
-    padding: 7px 10px;
-    font-size: 13px;
+    padding: 7px 12px;
+    font-size: 12.5px;
   }
   
   .price-text {

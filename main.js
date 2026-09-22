@@ -199,17 +199,15 @@ document.addEventListener('DOMContentLoaded', () => {
       cancelAnimationFrame(confettiAnimId);
     }
 
-    // 카페 테마와 어울리는 다채로운 색종이 팔레트 (브라운, 골드, 코랄, 크림, 올리브 등)
+    // Spotify 디자인 시스템 팔레트 (Spotify Green, 화이트, 블루, 오렌지, 레드 등)
     const colors = [
-      '#6b4226',
-      '#d4a373',
-      '#faedcd',
-      '#e07a5f',
-      '#81b29a',
-      '#f2cc8f',
-      '#3d405b',
-      '#ffb703',
-      '#fb8500',
+      '#1ed760', // Spotify Green
+      '#ffffff', // White
+      '#1db954', // Spotify Green Variant
+      '#539df5', // Announcement Blue
+      '#ffa42b', // Warning Orange
+      '#f3727f', // Negative Red
+      '#b3b3b3', // Silver
     ];
 
     // 색종이 조각 100개 생성

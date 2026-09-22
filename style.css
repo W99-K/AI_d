@@ -1,0 +1,457 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   바이브 카페 (Vibe Cafe) 주문서 스타일 시트
+   - 메인 테마: 따뜻한 카페 분위기의 베이지(#faf6f0) 및 브라운(#6b4226)
+   - 모바일 및 데스크톱 반응형 520px 최대 너비 레이아웃
+   ========================================================================== */
+
+/* 기본 리셋 및 전역 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: '맑은 고딕', 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #faf6f0;
+  color: #3e2723;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+/* 주문서 메인 컨테이너 */
+.order-container {
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(107, 66, 38, 0.08), 0 2px 6px rgba(107, 66, 38, 0.04);
+  padding: 36px 28px;
+  border: 1px solid #f0e6dc;
+}
+
+/* 상단 헤더 영역 */
+.header-section {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed #ede0d4;
+}
+
+.cafe-logo {
+  font-size: 54px;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(107, 66, 38, 0.15));
+}
+
+.cafe-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #6b4226;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.cafe-subtitle {
+  font-size: 14px;
+  color: #8d6e63;
+  font-weight: 400;
+}
+
+/* 폼 그룹 및 레이블 스타일 */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a2c17;
+  margin-bottom: 8px;
+}
+
+.required-badge {
+  color: #d32f2f;
+  margin-left: 4px;
+}
+
+/* 텍스트 입력, 셀렉트 박스, 텍스트에어리어 기본 스타일 */
+.input-field,
+.select-field,
+.textarea-field {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333333;
+  background-color: #faf8f5;
+  border: 1.5px solid #e0d5c8;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* 포커스 시 갈색 테두리 및 부드러운 그림자 효과 */
+.input-field:focus,
+.select-field:focus,
+.textarea-field:focus {
+  border-color: #6b4226;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(107, 66, 38, 0.16);
+}
+
+.input-field::placeholder,
+.textarea-field::placeholder {
+  color: #a89f91;
+  font-size: 13.5px;
+}
+
+.textarea-field {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* 라디오 버튼 및 체크박스 가로 배치 컨테이너 */
+.horizontal-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 커스텀 선택 칩 (사이즈 및 옵션) */
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #faf7f2;
+  border: 1.5px solid #e5dacd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555555;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.option-label:hover {
+  background-color: #f3ece2;
+  border-color: #c9b4a1;
+}
+
+/* 기본 라디오/체크박스 스타일 및 액센트 컬러 */
+.option-label input[type="radio"],
+.option-label input[type="checkbox"] {
+  accent-color: #6b4226;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* 활성화 상태 강조 */
+.option-label:has(input:checked) {
+  background-color: #f4ece4;
+  border-color: #6b4226;
+  color: #4a2c17;
+  font-weight: 600;
+}
+
+/* 수량 조절 입력 필드 특화 */
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-input {
+  width: 90px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.quantity-unit {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* 실시간 예상 금액 표시 영역 */
+.price-display-section {
+  margin: 28px 0 20px 0;
+  padding: 16px;
+  background-color: #f7f1ea;
+  border-radius: 12px;
+  border: 1px solid #ebd9c8;
+  text-align: center;
+}
+
+.price-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #6b4226;
+  letter-spacing: -0.5px;
+}
+
+/* 버튼 컨테이너 */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+}
+
+/* 주문하기 버튼 (메인 브라운) */
+.btn-primary {
+  background-color: #6b4226;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(107, 66, 38, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #825230;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(107, 66, 38, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 다시 작성 버튼 */
+.btn-secondary {
+  background-color: #ede0d4;
+  color: #5c381f;
+}
+
+.btn-secondary:hover {
+  background-color: #e2d1c2;
+}
+
+/* 주문 확인 메시지 박스 */
+.order-confirmation {
+  display: none; /* 기본 숨김 */
+  margin-top: 24px;
+  padding: 16px 20px;
+  background-color: #e8f5e9;
+  border: 1.5px solid #a5d6a7;
+  border-radius: 10px;
+  color: #1b5e20;
+  font-size: 14.5px;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.order-confirmation.show {
+  display: block;
+}
+
+.confirmation-header {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 알림/에러 메시지 바 (UI 내 안내) */
+.alert-box {
+  display: none;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: #ffebee;
+  border: 1.5px solid #ef9a9a;
+  border-radius: 8px;
+  color: #c62828;
+  font-size: 14px;
+  font-weight: 500;
+  animation: shake 0.3s ease;
+}
+
+.alert-box.show {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 엑셀 관리 및 다운로드 영역 */
+.excel-section {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px dashed #e0d3c5;
+}
+
+.excel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.excel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a3c26;
+}
+
+.excel-count-badge {
+  background-color: #f0e4d7;
+  color: #6b4226;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.btn-excel {
+  width: 100%;
+  background-color: #1e7145;
+  color: #ffffff;
+  padding: 11px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-excel:hover:not(:disabled) {
+  background-color: #165b36;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(30, 113, 69, 0.2);
+}
+
+.btn-excel:disabled {
+  background-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 최근 주문 이력 미니 테이블 */
+.recent-orders-list {
+  margin-top: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #ebd9c8;
+  border-radius: 8px;
+  background-color: #faf8f5;
+}
+
+.recent-order-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid #f0e6dc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recent-order-item:last-child {
+  border-bottom: none;
+}
+
+.recent-order-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recent-order-name {
+  font-weight: 600;
+  color: #3e2723;
+}
+
+.recent-order-desc {
+  font-size: 12px;
+  color: #795548;
+}
+
+.recent-order-price {
+  font-weight: 700;
+  color: #6b4226;
+  white-space: nowrap;
+}
+
+/* 부드러운 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 오류 알림 진동 효과 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* 반응형 스타일 조정 */
+@media (max-width: 480px) {
+  .order-container {
+    padding: 24px 18px;
+  }
+  
+  .horizontal-options {
+    gap: 8px;
+  }
+  
+  .option-label {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+  
+  .price-text {
+    font-size: 21px;
+  }
+}
+
+/* 주문 완료 시 색종이 폭죽 애니메이션 캔버스 */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
